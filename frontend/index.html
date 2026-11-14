@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triagem Inteligente — Saúde Mental</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__brand">
+    <span class="topbar__mark"></span>
+    <div>
+      <h1>Triagem Inteligente</h1>
+      <p>Projeto acadêmico — UNAMA, Análise e Desenvolvimento de Sistemas</p>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- ===================== SOBRE A PESQUISA ===================== -->
+  <section class="card card--intro">
+    <h2>Sobre esta pesquisa</h2>
+    <p>
+      Somos estudantes de <strong>Análise e Desenvolvimento de Sistemas da UNAMA
+      (Universidade da Amazônia)</strong>. Este site é um protótipo acadêmico que usa
+      Inteligência Artificial para apoiar a triagem inicial de saúde mental na
+      rede pública de Belém, ajudando a identificar possíveis sinais de estresse,
+      ansiedade e depressão a partir de respostas simples.
+    </p>
+    <p>
+      Para que os resultados do nosso estudo sejam úteis de verdade, pedimos que
+      você responda com <strong>informações reais</strong> — inclusive sintomas
+      pessoais, caso você já tenha ou já tenha tido alguma questão de saúde
+      mental. Não há resposta "certa" ou "errada": quanto mais sincera a
+      resposta, melhor para a pesquisa.
+    </p>
+    <ul class="lista-privacidade">
+      <li>Nenhum dado preenchido aqui será usado para qualquer outra finalidade além desta pesquisa acadêmica.</li>
+      <li>A <strong>matrícula</strong> só será usada caso precisemos comprovar a participação de alunos perante a universidade.</li>
+      <li>O <strong>nome</strong> pode ser fictício, se você preferir não se identificar.</li>
+    </ul>
+    <p class="muted">
+      Depois de ver o resultado, você poderá nos mandar um e-mail rápido
+      contando o que achou do site e se a IA acertou ou errou — isso é
+      extremamente valioso para o projeto.
+    </p>
+  </section>
+
+  <!-- ===================== FORMULÁRIO ===================== -->
+  <section id="tela-formulario" class="card card--form">
+    <h2>Ficha de triagem</h2>
+    <p class="muted">Preencha com o paciente ou com base na observação da equipe de acolhimento.</p>
+
+    <form id="form-triagem">
+      <fieldset>
+        <legend>Identificação</legend>
+        <div class="grid grid--3">
+          <label>Matrícula / prontuário
+            <input type="text" name="matricula" required>
+          </label>
+          <label>Nome completo (pode ser fictício)
+            <input type="text" name="nome" required>
+          </label>
+          <label>Semestre (se estudante)
+            <input type="number" name="semestre" min="1" max="20">
+          </label>
+          <label>Idade
+            <input type="number" name="idade" min="14" max="100">
+          </label>
+          <label>Gênero
+            <select name="genero">
+              <option value="">Prefere não dizer</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Nao-binario">Não-binário</option>
+            </select>
+          </label>
+        </div>
+        <p class="muted" style="margin-top:.6rem">
+          Idade e gênero ficam só no registro clínico — a IA não usa essas
+          informações para calcular o resultado (o conjunto de dados usado
+          para treiná-la não tem essas colunas).
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Histórico</legend>
+        <label class="checkbox">
+          <input type="checkbox" name="mental_health_history">
+          Já teve diagnóstico de saúde mental anteriormente
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Fatores físicos e do ambiente</legend>
+        <p class="muted">Para cada item, 0 = nunca/nenhum, 5 = sempre/muito alto.</p>
+        <div class="grid grid--4">
+          <label class="slider-label">Dor de cabeça <span class="slider-value" data-for="dor_cabeca">2</span>
+            <input type="range" name="dor_cabeca" min="0" max="5" value="2"></label>
+          <label>Pressão arterial
+            <select name="pressao_arterial">
+              <option value="1">Baixa</option>
+              <option value="2" selected>Normal</option>
+              <option value="3">Alta</option>
+            </select>
+          </label>
+          <label class="slider-label">Qualidade do sono (autoavaliação) <span class="slider-value" data-for="qualidade_sono_percebida">3</span>
+            <input type="range" name="qualidade_sono_percebida" min="0" max="5" value="3"></label>
+          <label class="slider-label">Dificuldade respiratória/falta de ar <span class="slider-value" data-for="dificuldade_respiratoria">1</span>
+            <input type="range" name="dificuldade_respiratoria" min="0" max="5" value="1"></label>
+          <label class="slider-label">Ruído no ambiente <span class="slider-value" data-for="nivel_ruido_ambiente">2</span>
+            <input type="range" name="nivel_ruido_ambiente" min="0" max="5" value="2"></label>
+          <label class="slider-label">Condições de moradia <span class="slider-value" data-for="condicoes_moradia">3</span>
+            <input type="range" name="condicoes_moradia" min="0" max="5" value="3"></label>
+          <label class="slider-label">Sensação de segurança <span class="slider-value" data-for="sensacao_seguranca">3</span>
+            <input type="range" name="sensacao_seguranca" min="0" max="5" value="3"></label>
+          <label class="slider-label">Necessidades básicas atendidas <span class="slider-value" data-for="necessidades_basicas">3</span>
+            <input type="range" name="necessidades_basicas" min="0" max="5" value="3"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Fatores acadêmicos e sociais</legend>
+        <p class="muted">Para cada item, 0 = nunca/nenhum, 5 = sempre/muito alto (exceto Apoio social, de 0 a 3).</p>
+        <div class="grid grid--4">
+          <label class="slider-label">Desempenho acadêmico <span class="slider-value" data-for="desempenho_academico">3</span>
+            <input type="range" name="desempenho_academico" min="0" max="5" value="3"></label>
+          <label class="slider-label">Carga de estudos <span class="slider-value" data-for="carga_estudos">3</span>
+            <input type="range" name="carga_estudos" min="0" max="5" value="3"></label>
+          <label class="slider-label">Relação com professores <span class="slider-value" data-for="relacao_professores">3</span>
+            <input type="range" name="relacao_professores" min="0" max="5" value="3"></label>
+          <label class="slider-label">Preocupação com o futuro profissional <span class="slider-value" data-for="preocupacao_futuro">2</span>
+            <input type="range" name="preocupacao_futuro" min="0" max="5" value="2"></label>
+          <label class="slider-label">Apoio social <span class="slider-value" data-for="apoio_social_academico">2</span>
+            <input type="range" name="apoio_social_academico" min="0" max="3" value="2"></label>
+          <label class="slider-label">Pressão dos colegas <span class="slider-value" data-for="pressao_colegas">1</span>
+            <input type="range" name="pressao_colegas" min="0" max="5" value="1"></label>
+          <label class="slider-label">Atividades extracurriculares <span class="slider-value" data-for="atividades_extracurriculares">2</span>
+            <input type="range" name="atividades_extracurriculares" min="0" max="5" value="2"></label>
+          <label class="slider-label">Já sofreu bullying <span class="slider-value" data-for="bullying">0</span>
+            <input type="range" name="bullying" min="0" max="5" value="0"></label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn--primary">Processar triagem com IA</button>
+      <p id="form-erro" class="erro"></p>
+    </form>
+  </section>
+
+  <!-- ===================== DASHBOARD DE RESULTADO ===================== -->
+  <section id="tela-resultado" class="card card--resultado oculto">
+    <h2>Resultado da triagem</h2>
+    <p class="muted" id="resultado-paciente"></p>
+
+    <h4 class="rotulo-secao">Previsões da IA (Machine Learning)</h4>
+    <div class="grid grid--3" id="blocos-risco"></div>
+
+    <h4 class="rotulo-secao">Indicadores complementares (regra clínica simplificada, não-IA)</h4>
+    <div class="grid grid--2" id="blocos-indicadores"></div>
+
+    <div class="card__sub">
+      <h3>Fatores mais determinantes para a IA</h3>
+      <ul id="lista-fatores"></ul>
+      <p class="aviso">
+        A IA não emite diagnóstico. Os valores acima são estimativas estatísticas
+        para apoiar — nunca substituir — a avaliação do profissional de psicologia.
+      </p>
+    </div>
+
+    <div class="card__sub">
+      <h3>Anotações e validação do profissional</h3>
+      <p class="muted">
+        Se a IA acertou, só valide. Se você discorda de alguma classificação,
+        corrija abaixo — isso é o que ensina o modelo a melhorar com o uso real.
+      </p>
+      <div class="grid grid--3">
+        <label>Corrigir risco de ansiedade
+          <select id="corrigir-ansiedade">
+            <option value="">Manter sugestão da IA</option>
+            <option value="Baixo">Baixo</option>
+            <option value="Medio">Médio</option>
+            <option value="Alto">Alto</option>
+          </select>
+        </label>
+        <label>Corrigir risco de depressão
+          <select id="corrigir-depressao">
+            <option value="">Manter sugestão da IA</option>
+            <option value="Baixo">Baixo</option>
+            <option value="Medio">Médio</option>
+            <option value="Alto">Alto</option>
+          </select>
+        </label>
+        <label>Corrigir risco de estresse
+          <select id="corrigir-estresse">
+            <option value="">Manter sugestão da IA</option>
+            <option value="Baixo">Baixo</option>
+            <option value="Medio">Médio</option>
+            <option value="Alto">Alto</option>
+          </select>
+        </label>
+      </div>
+      <textarea id="observacoes" rows="4" placeholder="Observações clínicas, contexto familiar, ressalvas..."></textarea>
+      <label class="checkbox">
+        <input type="checkbox" id="laudo-validado">
+        Hipótese revisada e validada por mim
+      </label>
+      <button id="btn-salvar" class="btn btn--secundario">Salvar anotações</button>
+      <span id="salvo-ok" class="salvo-ok oculto">Salvo ✓</span>
+    </div>
+
+    <!-- ===================== AGRADECIMENTO + FEEDBACK ===================== -->
+    <div class="card__sub card__agradecimento">
+      <h3>Muito obrigado por ajudar no nosso projeto acadêmico! 💚</h3>
+      <p>
+        Sua participação é muito importante para a nossa pesquisa sobre triagem
+        inteligente de saúde mental (UNAMA — Análise e Desenvolvimento de Sistemas).
+      </p>
+      <p>
+        Se puder, conte pra gente: o que você achou do site e a IA acertou ou
+        errou o resultado em relação ao que você realmente sente? Qualquer
+        feedback, elogio ou crítica nos ajuda a melhorar o projeto.
+      </p>
+      <a id="link-feedback" class="btn btn--primary" href="#">Enviar feedback por e-mail</a>
+      <p class="muted" style="margin-top:.6rem">
+        O botão abre o seu próprio aplicativo de e-mail, com o resultado desta
+        triagem já preenchido — é só completar com sua opinião e enviar pela
+        sua conta.
+      </p>
+    </div>
+
+    <button id="btn-nova" class="btn btn--texto">Iniciar nova triagem</button>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

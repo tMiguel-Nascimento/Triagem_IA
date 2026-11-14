@@ -1,0 +1,20 @@
+{
+  "_comentario": "Nome do campo em português (usado no formulário/banco) -> nome da coluna original no StressLevelDataset.csv (usado pelo modelo). Um único arquivo lido pelo backend (app.py) e pelo retreino (retrain_from_feedback.py), para nunca haver duas versões divergentes desse mapeamento.",
+  "dor_cabeca": "headache",
+  "pressao_arterial": "blood_pressure",
+  "qualidade_sono_percebida": "sleep_quality",
+  "dificuldade_respiratoria": "breathing_problem",
+  "nivel_ruido_ambiente": "noise_level",
+  "condicoes_moradia": "living_conditions",
+  "sensacao_seguranca": "safety",
+  "necessidades_basicas": "basic_needs",
+  "desempenho_academico": "academic_performance",
+  "carga_estudos": "study_load",
+  "relacao_professores": "teacher_student_relationship",
+  "preocupacao_futuro": "future_career_concerns",
+  "apoio_social_academico": "social_support",
+  "pressao_colegas": "peer_pressure",
+  "atividades_extracurriculares": "extracurricular_activities",
+  "bullying": "bullying",
+  "mental_health_history": "mental_health_history"
+}

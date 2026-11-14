@@ -1,0 +1,5 @@
+backend/triagem.db
+ml/feedback_profissionais.csv
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
